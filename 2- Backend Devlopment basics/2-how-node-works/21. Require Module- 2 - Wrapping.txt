@@ -1,0 +1,20 @@
+WRAPPING:
+After the module is loaded, the module's code is wrapped into a special function which will give us access to a couple of special objects.
+
+It's because the nodejs run time, takes the code off our module and puts it inside the Immediately Invoked Function Expression, or IIFE.
+
+Node does not directly execute the code that is written into a file, but instead, the wrapper function that will contain our code in it's body. It also passes the "exports", "require" , "__filename" and "__dir" objects into it. 
+
+So that is why in every module we automatically have access to stuff like the require function. So these are basically like global variables that are injected into each and every module.
+
+Two very important things: 
+First, this gives developers access to all these global variables.
+
+Second, it keeps the top-level variables that we define in our modules private. So it's scoped only to the current module instead of leaking everything into the global object.
+
+
+WRAPPING'S IMPORTANCE:
+
+So imagine for a second, that we declared a variable x in one of our modules and then included an 'npm' module that also used a variable called x. Without this mechanism, our own variable would then get overridden and the entire app would just not work. 
+
+So each module having its private scope is absolutely crucial and is achieved through this clever trick of wrapping our code into this special function.

@@ -1,0 +1,34 @@
+Common JS modules:
+used in node.
+Uses Require();
+
+Native ECMA script or ES module system:
+works in the browser
+import export syntax
+
+Q. Why in NODE.JS each and every module actually gets access to the require function in order to import modules? When it's not a standard JavaScript function?
+
+Ans: Each time that we require a module by calling the require function with a module name, the following steps are executed:
+
+1. The path to the required module is resolved and the file is loaded. 
+2. Then a process called wrapping happens.
+3. After that the module code is executed.
+4. Then module exports are returned. 
+5. And finally the entire module gets cached.
+
+
+KINDS OF MODULES:
+
+1. Node's core modules
+2. Developer's modules
+3. Third party modules from npm
+
+
+RESOLVING AND LOADING:
+When the require functions receives the module name as its input, it will first try to load a core module with that name. It will automatically find a path to that module and then load it.
+
+Now if the path starts with a dot, or two dots, it means that it's a developer module. So node will try to load that file, but if there is no file with that name, then it will look for a folder instead and load index.js if it's in that folder.
+
+Finally, if the required module is neither a core module, nor a developer module, node will assume it's a module from 'npm'. These third party modules are stored in a node module folder, so node will step into that folder and try to find a module there and then load it.
+
+And if the file can't be found anywhere, then an error is thrown and the execution of the app is stopped.

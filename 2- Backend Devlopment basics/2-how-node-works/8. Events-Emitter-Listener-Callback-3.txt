@@ -1,0 +1,28 @@
+
+
+In Node, there are certain objects called "event emitters" that emit named "events" as soon as something important happens in the app, like a request hitting server, or a timer expiring, or a file finishing to read. These "events" can then be picked up by "event listeners" that we developers set up, which will fire off "callback functions" that are attached to each "event listener".
+
+On one hand, we have "event emitters", and on the other hand "event listeners" that will react to emitted events by calling "callback function".
+
+
+So when we want to create a server, we use the Create Server method and save it to a Server Variable. 
+
+const server = http.createServer():
+server.on('request', (req, res) => {
+    console.log('Request received');
+    res.end('Request received');
+});
+
+
+
+This implementation here is a bit different from what we did before, but it works the exact same way. Anyway, this "server.on" method is how we actually create a "listener", and in this case for the "request" event. 
+
+So let's say we have our server running, and a new request is made. The server acts as an "emitter", and will automatically emit an event called "request" each time that a request hits the server. Then, since we already have a "listener" set up for this exact event, the "callback function" that we attached to this listener will automatically be called. And the "callback function" will simply send some data back to the client. 
+
+Behind the scenes the "server" is actually an instance of the Node JS "EventEmitter" class, so it inherits all this event emitting and listening logic from that EventEmitter class. And this EventEmitter logic is called the "Observer Pattern" in Javascript. 
+
+So the idea to I set up an "observer", in this case the "event listener", which keeps waiting, keeps observing the subject that will eventually emit the "event" that the "listener" is waiting for. 
+
+The observer pattern has been designed to react rather than to call. And that is because there is a huge benefit of using this architecture, which is the fact that everything is more de-coupled. We don't have, for example, functions from the File System module calling functions from the HTTP module because it would be a huge mess. Instead, these modules are nicely de-coupled and self-contained, each emitting events that other functions, even if they come from other modules, can respond to. 
+
+Also, using an event-driven architecture makes it way more straight forward to react multiple times to the same event. All we have to do is to set up multiple listeners.
