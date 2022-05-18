@@ -1,0 +1,31 @@
+So far we have only installed packages locally, so they only work in our project.
+
+
+GOLBAL INSTALL
+
+We can use 'i' instead of 'install'.
+
+npm i nodemon --global 
+
+TO RUN: nodemon index.js
+
+
+AUTOCOMPLETE
+
+Just hit 'tab' button to autocomplete.
+
+
+USING LOCAL DEPENDENCIES IN TERMINAL
+
+In the package.json file, under the "scripts" field, create a new script:
+
+"scripts": {
+    "start": "nodemon index.js"
+  },
+
+
+Now we can run this script like this:
+
+npm run start
+
+
