@@ -1,0 +1,33 @@
+[ MIDDLEWARE AND THE REQUEST-RESPONSE CYCLE ]
+
+To start the request-response cycle, our Express app receives a request when someone hits a server for which it will then create a 'request' and 'response' object. That data will then be used and processed in order to generate and send back a meaningful response.
+
+
+< Middleware >
+
+In order to process that data, in Express we use something called 'middleware', which can manipulate the 'request' or the 'response' object. Or execute any other code that we like. 
+
+So middleware doesn't always have to be just about the 'request' or the 'response' object, but it usually is mostly about the 'request'.
+
+It's called 'middleware' remember because it's a function that is executed between, so in the middle of receiving the request and sending the response. 
+
+In Express, everything is 'middleware'. So again, even when we defined our routes, we can think of the route handler functions that we wrote as 'middleware' functions.
+
+Example of middleware are 'express.JSON', which is also called 'body-parser'.
+
+
+All the 'middleware' together that we use in our app, is called the 'middleware Stack'. The order of 'middleware' in the stack, is actually defined by the order they are defined in the code. 
+
+So a 'middleware' that appears first in the code, is executed before one that appears later. And so the order of the code matters a lot in Express.
+
+
+<Process> 
+
+You can think of the whole process like this, our request and response object that were created in the beginning go through each middleware where they are processed, or where just some other code is executed. Then at the end of each middleware function, a next function is called, which is a function that we have access to in each middleware function. Just like the request and response objects.
+
+So when we call the next function, the next middleware in the stack will be executed with the exact same request and response object. And that happens with all the middlewares until we reach the last one.
+
+And so the initial request and response object go through each middleware step by step. And you can think of this whole process as kind of a pipeline where our data go through, so just like its been piped from request to final response.
+
+
+Last middleware function is usually a route handler. In this handler we do actually not call the next function to move to the next middleware. Instead, we finally send the response data back to the client. And then we finish the so-called request-response cycle.

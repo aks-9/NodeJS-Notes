@@ -1,0 +1,20 @@
+5 TYPES OF HTTP METHODS
+
+1. GET: it's used to perform the Read operation on data. 
+
+2. POST : if the client wants to create a new resource in our database.
+
+
+The endpoint names remain exactly the same name as before. The only difference is really the HTTP method that is used for the request.
+
+If the /tours endpoint is accessed with GET, we send data to the client. But if the same endpoint is accessed with POST, we expect data to come in with a request, so that we can then create a new resource on the server side.
+
+
+
+To update resources. Either a PUT or a PATCH request should be made to the endpoint.
+
+3. PUT: The client is supposed to send the entire updated object.
+
+4. PATCH: it is supposed to send only the part of the object that has been changed.  
+
+5. DELETE: To Delete a resource. The I.D. or some other unique identifier of the resource to be deleted should be part of the URL.
