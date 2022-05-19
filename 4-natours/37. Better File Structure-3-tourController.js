@@ -1,11 +1,11 @@
 //* A better file structure-3
 
-//This is 'tourController.js' file. All the route handlers of 'tour' resource are here.
+//This is 'tourController.js' file. All the route handlers of 'tours' resource are here.
 
 const fs = require("fs");
 
 const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`) //because our dirname is now the 'routes'. So we need to get out of that using '../'. So go up one folder.
+  fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`) //because our 'dirname' is now the 'routes'. So we need to get out of that using '../'. So go up one folder.
 );
 
 //we want to actually export all of these functions from this module, so that they can be imported in the 'routers' and thus accessed. But in this case we do not only have one export, so we're not gonna use 'module.exports', but instead we will put all of these functions on the exports object. Replace the 'const' keyword with 'exports.'
