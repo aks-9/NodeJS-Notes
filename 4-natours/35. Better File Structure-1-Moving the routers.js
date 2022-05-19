@@ -14,20 +14,15 @@ const app = express();
 //* 1) MIDDLEWARES
 
 app.use(morgan("dev"));
-
 app.use(express.json());
 
-//global middleware-1
 app.use((req, res, next) => {
   console.log("Hello from the middleware 👋");
-
   next();
 });
 
-//global middleware-2
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-
   next();
 });
 
@@ -120,7 +115,6 @@ const deleteTour = (req, res) => {
 
 const getAllUsers = (req, res) => {
   res.status(500).json({
-    //status code '500' means internal server error.
     status: "error",
     message: "This route is not yet implemented",
   });
@@ -128,7 +122,6 @@ const getAllUsers = (req, res) => {
 
 const createUser = (req, res) => {
   res.status(500).json({
-    //status code '500' means internal server error.
     status: "error",
     message: "This route is not yet implemented",
   });
@@ -136,7 +129,6 @@ const createUser = (req, res) => {
 
 const getUser = (req, res) => {
   res.status(500).json({
-    //status code '500' means internal server error.
     status: "error",
     message: "This route is not yet implemented",
   });
@@ -144,7 +136,6 @@ const getUser = (req, res) => {
 
 const updateUser = (req, res) => {
   res.status(500).json({
-    //status code '500' means internal server error.
     status: "error",
     message: "This route is not yet implemented",
   });
@@ -152,7 +143,6 @@ const updateUser = (req, res) => {
 
 const deleteUser = (req, res) => {
   res.status(500).json({
-    //status code '500' means internal server error.
     status: "error",
     message: "This route is not yet implemented",
   });
@@ -193,7 +183,3 @@ const port = 3000;
 app.listen(port, () => {
   console.log(`App running on ${port}...`);
 });
-
-/* 
-
-*/
