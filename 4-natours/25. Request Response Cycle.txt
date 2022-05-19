@@ -23,11 +23,11 @@ So a 'middleware' that appears first in the code, is executed before one that ap
 
 <Process> 
 
-You can think of the whole process like this, our request and response object that were created in the beginning go through each middleware where they are processed, or where just some other code is executed. Then at the end of each middleware function, a next function is called, which is a function that we have access to in each middleware function. Just like the request and response objects.
+You can think of the whole process like this, our 'request' and 'response' object that were created in the beginning, go through each middleware where they are processed, or where just some other code is executed. Then at the end of each middleware function, a 'next' function is called, which is a function that we have access to in each middleware function. Just like the 'request' and 'response' objects.
 
-So when we call the next function, the next middleware in the stack will be executed with the exact same request and response object. And that happens with all the middlewares until we reach the last one.
+So when we call the 'next' function, the next middleware in the stack will be executed with the exact same 'request' and 'response' object. And that happens with all the middlewares until we reach the last one.
 
-And so the initial request and response object go through each middleware step by step. And you can think of this whole process as kind of a pipeline where our data go through, so just like its been piped from request to final response.
+And so the initial 'request' and 'response' object go through each middleware step by step. And you can think of this whole process as kind of a pipeline where our data go through, so just like its been piped from request to final response.
 
 
-Last middleware function is usually a route handler. In this handler we do actually not call the next function to move to the next middleware. Instead, we finally send the response data back to the client. And then we finish the so-called request-response cycle.
+Last middleware function is usually a route handler. In this handler we do not call the 'next' function to move to the next middleware. Instead, we finally send the 'response' data back to the client. And then we finish the so-called request-response cycle.
