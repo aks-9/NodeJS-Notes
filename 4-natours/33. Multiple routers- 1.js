@@ -1,6 +1,6 @@
 //* Multiple routers- 1
 
-//* Our final goal will be to separate all the code that we have in the previous file into multiple files. So we will have one file that only contains all of these 'routes', then another file, which has the 'routes for the users'. Then we will have a file which contains the 'handlers' only for the users and then also one file that will contain all the 'handlers for the tours'
+//* Our final goal will be to separate all the code that we have in the previous file into multiple files. So we will have one file that only contains all of these 'routes for tours', then another file, which has the 'routes for the users'. Then we will have a file which contains the 'handlers only for the users' and then also one file that will contain all the 'handlers for the tours'
 
 //* But in order to be able to do that, we actually need to now create one separate router for each of our resources.
 
@@ -14,20 +14,17 @@ const app = express();
 //* 1) MIDDLEWARES
 
 app.use(morgan("dev"));
-
 app.use(express.json());
 
 //global middleware-1
 app.use((req, res, next) => {
   console.log("Hello from the middleware 👋");
-
   next();
 });
 
 //global middleware-2
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-
   next();
 });
 
@@ -117,10 +114,8 @@ const deleteTour = (req, res) => {
   });
 };
 
-//adding new route handlers for new resource
 const getAllUsers = (req, res) => {
   res.status(500).json({
-    //status code '500' means internal server error.
     status: "error",
     message: "This route is not yet implemented",
   });
@@ -128,7 +123,6 @@ const getAllUsers = (req, res) => {
 
 const createUser = (req, res) => {
   res.status(500).json({
-    //status code '500' means internal server error.
     status: "error",
     message: "This route is not yet implemented",
   });
@@ -136,7 +130,6 @@ const createUser = (req, res) => {
 
 const getUser = (req, res) => {
   res.status(500).json({
-    //status code '500' means internal server error.
     status: "error",
     message: "This route is not yet implemented",
   });
@@ -144,7 +137,6 @@ const getUser = (req, res) => {
 
 const updateUser = (req, res) => {
   res.status(500).json({
-    //status code '500' means internal server error.
     status: "error",
     message: "This route is not yet implemented",
   });
@@ -152,7 +144,6 @@ const updateUser = (req, res) => {
 
 const deleteUser = (req, res) => {
   res.status(500).json({
-    //status code '500' means internal server error.
     status: "error",
     message: "This route is not yet implemented",
   });
@@ -162,7 +153,7 @@ const deleteUser = (req, res) => {
 
 //create one router for each of the resources
 
-const tourRouter = express.Router(); //creating a new router.
+const tourRouter = express.Router(); //creating a new router using a method called 'Router'.
 
 app.use("/api/v1/tours", tourRouter); //using 'tourRouter' middleware, and we will use it for this specific route: '/api/v1/tours'. This URL here is already in our kind of parent route. When we create a router system like this, it's like a small sub app for each of these resources.
 
@@ -177,18 +168,16 @@ tourRouter //We use '/:id' to indicate that we further have a sub route.
   .patch(updateTour)
   .delete(deleteTour);
 
-//So let's say that we have an incoming request now for '/api/version one /tours/'. So the request goes into the middleware stack and when it hits this line of code 'app.use('/api/v1/tours', tourRouter);', it will match this URL '/api/v1/tours'. So it will match this route and therefore our 'tourRouter' middleware function will run.
+//So let's say that we have an incoming request now for '/api/v1/tours/'. So the request goes into the middleware stack and when it hits this line of code 'app.use('/api/v1/tours', tourRouter);', it will match this URL '/api/v1/tours'. So it will match this route and therefore our 'tourRouter' middleware function will run.
 
 //So 'tourRouter' is this sub application that we created, which in turn has its own routes.
 
-//And if the request was for '/api/version one /tours/' then it will inside our mini app, hit this route '/:id'
+//And if the request was for '/api/v1/tours/:id' then it will inside our mini app, hit this route '/:id'
 
 //And finally, it will run one of these handlers, depending on the method that was used.
 
-//adding routes for new resource
 app.route("/api/v1/users").get(getAllUsers).post(createUser);
 
-//adding routes for new resource
 app
   .route("/api/v1/tours/:id")
   .get(getUser)
