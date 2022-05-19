@@ -1,7 +1,7 @@
 //* A better file structure-2
 //This is 'app.js file.'
 
-//* Removing the route handlers from the routes file, creating a seperate 'server.js' file.
+//* Moving the route handlers, creating a seperate 'server.js' file.
 
 // This 'app.js' file is mainly used for 'middleware' declarations. So we have here all our 'middleware' that we want to apply to all the routes. The most important thing to keep in mind is that we created these different routers for each of the resources, to have a nice separation of concern between these resources. So basically creating one small sub-application for each of them and then putting everything together in one main app.js file.
 
@@ -20,12 +20,12 @@ const userRouter = require("./routes/userRoutes"); //importing the routers from 
 
 app.use(morgan("dev"));
 app.use(express.json());
-//global middleware-1
+
 app.use((req, res, next) => {
   console.log("Hello from the middleware 👋");
   next();
 });
-//global middleware-2
+
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
