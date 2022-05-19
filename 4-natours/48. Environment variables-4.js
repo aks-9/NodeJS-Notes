@@ -2,7 +2,7 @@
 
 // This is 'server.js' file.
 
-//So we need some way of reading these variables from this file and then saving them as environment variables. And for that the standard is kind of using a npm package called 'dotenv'.
+//So we need some way of reading these variables from 'config.env' file and then saving them as environment variables. And for that the standard is kind of using a npm package called 'dotenv'.
 
 // npm i dotenv
 
