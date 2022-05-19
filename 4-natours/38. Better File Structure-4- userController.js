@@ -1,10 +1,9 @@
 //* A better file structure-4
 
-//This is 'userController.js' file. It has all the route handler functions fo 'user' resource.
+//This is 'userController.js' file. It has all the route handler functions fo 'users' resource.
 
 exports.getAllUsers = (req, res) => {
   res.status(500).json({
-    //status code '500' means internal server error.
     status: "error",
     message: "This route is not yet implemented",
   });
@@ -12,7 +11,6 @@ exports.getAllUsers = (req, res) => {
 
 exports.createUser = (req, res) => {
   res.status(500).json({
-    //status code '500' means internal server error.
     status: "error",
     message: "This route is not yet implemented",
   });
@@ -20,7 +18,6 @@ exports.createUser = (req, res) => {
 
 exports.getUser = (req, res) => {
   res.status(500).json({
-    //status code '500' means internal server error.
     status: "error",
     message: "This route is not yet implemented",
   });
@@ -28,7 +25,6 @@ exports.getUser = (req, res) => {
 
 exports.updateUser = (req, res) => {
   res.status(500).json({
-    //status code '500' means internal server error.
     status: "error",
     message: "This route is not yet implemented",
   });
