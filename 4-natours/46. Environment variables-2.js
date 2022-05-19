@@ -11,26 +11,22 @@ However Express does not really define this variable, and so we have to do that 
 
 Close the current process with ctrl + c , and clear the console.
 
-when we last started this process we did it using 'npm start' that stands for 'nodemon server.js'
-
-But if you want to set an environment variable for this process, we need to pre-plan that variable to this command:
+When we last started this process we did it using 'npm start' that stands for 'nodemon server.js'. But if you want to set an environment variable for this process, we need to pre-plan that variable to this command:
 
 FOR LINUX: NODE_ENV=development nodemon server.js
-
 FOR WINDOWS: SET NODE_ENV=production&& nodemon server.js
 
 We can also modify it more like:
 
 FOR LINUX: NODE_ENV=development X=23 nodemon server.js
-
 FOR WINDOWS: SET NODE_ENV=production&& X=23&& nodemon server.js
 
 
 
-So again many packages on npm that we use for Express development actually depend on this environment variable. And so when our project is ready and we are gonna deploy it, we then should change the NODE_ENV and variable to production.
+So again many packages on npm that we use for Express development actually depend on this environment variable. And so when our project is ready and we are gonna deploy it, we then should change the 'NODE_ENV' and variable to production.
 
 
-we usually use environment variables like configuration settings for our applications. So whenever our app needs some configuration for stuff that might change based on the environment that the app is running in, we use environment variables. 
+We usually use environment variables like configuration settings for our applications. So whenever our app needs some configuration for stuff that might change based on the environment that the app is running in, we use environment variables. 
 
 For example we might use different databases for development and for testing until we could define one variable for each and then activate the right database according to the environment. Also we could set sensitive data like passwords and user name using environment variables.
 */
