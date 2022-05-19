@@ -17,7 +17,7 @@ app.listen(port, () => {
 
 /*
 
-So right now, in the 'package.json' file we have 'start nodemon server.js', but I also want to add another one for production just so that we can test what happens in that situation.
+So right now, in the 'package.json' file we have 'start: nodemon server.js', but I also want to add another one for production just so that we can test what happens in that situation.
 
 
 
@@ -40,7 +40,7 @@ So right now, in the 'package.json' file we have 'start nodemon server.js', but 
   Hello from the middleware 👋
   2022-05-18T11:26:41.056Z
   
-  Let's go back to our development script, so npm run start:dev and this time when we make a request from Postman, we will get our logger back:
+  Let's go back to our development script, so 'npm run start:dev' and this time when we make a request from Postman, we will get our logger back:
 
   development
 App running on 3000...
