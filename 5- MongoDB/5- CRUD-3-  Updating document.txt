@@ -1,0 +1,35 @@
+[1.  Update a single document ]
+
+db.tours.updateOne({ name: "The Snow Adventurer"}, { $set: {price: 597} })
+
+So first we specify the document in 'filter object' that we need to update, and now the second object that we  need to specify is 'what' we actually want to update in the document.
+
+In the second object, we need to use the '$set' operator, and finally pass the 'property to be updated, and the value we want to set it to' in yet another object.
+
+OUTPUT: 
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+
+
+Now if this query would have matched multiple documents, then only the first one would have been updated because we were using '.updateOne.' 
+
+And if we already know beforehand that our query is going to match multiple documents, and we want to update all of them, then we should use '.updateMany'.
+
+
+
+[2.  Update multiple documents ]
+
+db.tours.updateMany({ price: {$gt: 500}, rating: {$gte: 4.8} }, { $set: {premium: true} })
+
+This will find the documents where the 'price' is greater than '500' and 'rating' is greater than or equal to '4.8', and then set the 'premium' property to 'true' if it exists, and if it doesn't exist then add a new 'premium' property and set it to 'true'.
+
+Now if we check all documents again,
+
+db.tours.find()
+
+OUTPUT: 
+
+{ "_id" : ObjectId("62862bafc7a342f60b118c24"), "name" : "The Snow Adventurer", "price" : 597, "rating" : 4.9, "difficulty" : "easy", "premium" : true }
+
+
+
+Similarly we can replace the whole document, instead of updating a part of it using 'replaceOne' or 'replaceMany'.

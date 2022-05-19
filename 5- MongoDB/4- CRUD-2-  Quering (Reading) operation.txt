@@ -1,0 +1,112 @@
+[ 1. Querying for all documents in a collection ]
+
+> db.tours.find()
+
+OUTPUT: 
+
+{ "_id" : ObjectId("628625bc4808e6b0eb7bdf30"), "name" : "The Forest Hiker", "price" : 297, "rating" : 4.7 }
+{ "_id" : ObjectId("62862bafc7a342f60b118c23"), "name" : "The Sea Explorer", "price" : 497, "rating" : 4.8 }
+{ "_id" : ObjectId("62862bafc7a342f60b118c24"), "name" : "The Snow Adventurer", "price" : 997, "rating" : 4.9, "difficulty" : "easy" }
+
+To query for all the documents in a certain collection we use 'find()' without passing anything in there. It gives us simply a result with all the documents that are in a certain collection.
+
+
+
+[ 2. Querying for a specific document in a collection ]
+
+If we actually only want one tour and we already know its name, we can pass in a 'filter object'.
+
+> db.tours.find({ name: "The Forest Hiker" })
+
+OUTPUT: 
+
+{ "_id" : ObjectId("628625bc4808e6b0eb7bdf30"), "name" : "The Forest Hiker", "price" : 297, "rating" : 4.7 }
+
+And, we could do the same for any other 'filter object':
+
+> db.tours.find({ difficulty: "easy" })
+
+OUTPUT: 
+
+{ "_id" : ObjectId("62862bafc7a342f60b118c24"), "name" : "The Snow Adventurer", "price" : 997, "rating" : 4.9, "difficulty" : "easy" }
+
+
+
+[ 3. Query Operators]
+
+To search for tours which have a price below 500.
+
+> db.tours.find({ price: {$lte: 500} })
+
+'lte' stands for 'less than or equal'.
+
+We need to define yet a new object where we set the lte property to 500, then close that object, and then close that first price object and then close the function.
+
+This special sign '$' is reserved in MongoDB for its operators.
+
+OUTPUT: 
+
+{ "_id" : ObjectId("628625bc4808e6b0eb7bdf30"), "name" : "The Forest Hiker", "price" : 297, "rating" : 4.7 }
+{ "_id" : ObjectId("62862bafc7a342f60b118c23"), "name" : "The Sea Explorer", "price" : 497, "rating" : 4.8 }
+
+
+
+[ 4. Multiple Query Operators: AND ]
+
+To search for two search criteria at the same time. If we search for documents which have the price less or equal than 500, but also, at the same time, the rating greater or equal to 4.8. This is similar to an "AND" query.
+
+'lte' stands for 'less than' and 'gte' stands for 'greater than or equal'.
+
+> db.tours.find({ price: {$lt: 500}, rating: {$gte: 4.8} })
+
+OUTPUT: 
+
+{ "_id" : ObjectId("62862bafc7a342f60b118c23"), "name" : "The Sea Explorer", "price" : 497, "rating" : 4.8 }
+
+
+[ 5. Multiple Query Operators: OR ]
+
+If we are searching for all the documents where at least one of the conditions is true.
+
+The way it works with MongoDB operators is like this. We say '$or' and then, we specify an array:
+
+> db.tours.find({ $or: [ ] })
+
+This array will then contain multiple objects for each of our 'filters'. And within each object we will then put the conditions where we want one of them to be true:
+
+> db.tours.find({ $or: [ { price: {$lt: 500} } , { rating: {$gte: 4.8} } ] })
+
+
+
+[ 6. Object for Projection ]
+
+Besides our filter object, so this one, we can also pass in an 'object for projection'. So, what projection means is that we simply want to select 'some' of the fields in the output.
+
+> db.tours.find({ $or: [ { price: {$lt: 500} } , { rating: {$gte: 4.8} } ] }, {name: 1} )
+
+What this means is that we only want the 'name' to be in the output, and so that's why we set 'name' to one. All the other properties are not gonna appear in this case.
+
+OUTPUT: 
+
+{ "_id" : ObjectId("628625bc4808e6b0eb7bdf30"), "name" : "The Forest Hiker" }
+{ "_id" : ObjectId("62862bafc7a342f60b118c23"), "name" : "The Sea Explorer" }
+{ "_id" : ObjectId("62862bafc7a342f60b118c24"), "name" : "The Snow Adventurer" }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

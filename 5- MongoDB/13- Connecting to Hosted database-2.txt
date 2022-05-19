@@ -1,0 +1,8 @@
+To connect the mongo shell to our hosted database:
+
+
+mongo --version
+
+mongo "mongodb+srv://cluster0.mtcvn.mongodb.net/myFirstDatabase" --username ashish
+
+t3Im4F6Uz9BupivH

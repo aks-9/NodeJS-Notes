@@ -1,0 +1,77 @@
+[ 1. Create a database ]:
+
+we use the "use" command inside the Mongo Shell, and then the name of the database that we want to create.
+
+> use natours-test
+switched to db natours-test
+
+And so it created that database, and it also switched to it. Now remember that inside a database we have collections, and then each collection has documents in it.
+
+
+[ 2. Create a collection ]
+
+> db.tours.insertMany()
+
+'db' is the currently active database. And now we need to specify the 'collection' name where a 'document' is gonna be. 
+
+And we do that by using dot, and then the name of the 'collection', which is in this case "tours".
+
+And then we use 'insertMany' function on it to create many documents.
+
+
+[ 3. Insert a document ]
+
+MongoDb uses BSON, which is quite similar to JSON, so we can actually simply pass a JavaScript object into this 'insertMany' function, and it will then convert it into JSON and BSON.
+
+> db.tours.insertOne({ name: "The Forest Hiker", price: 297, rating: 4.7 })
+
+
+This will insert one document into the 'tours' collection, and assign it an object ID.
+
+
+[ 4. Listing documents ]
+
+> db.tours.find()
+
+This will list all the documents in a collection:
+
+{ "_id" : ObjectId("628625bc4808e6b0eb7bdf30"), "name" : "The Forest Hiker", "price" : 297, "rating" : 4.7 }
+
+You can see that this really is just a regular JSON object.
+
+
+[ 5. Show all databases ]
+
+>show dbs
+admin         0.000GB
+config        0.000GB
+local         0.000GB
+natours-test  0.000GB
+
+
+[ 6. Switching to a database ]
+
+> use admin
+switched to db admin
+
+We can use 'use' command to switch to a different database.
+
+
+[ 7. Show all collections ]
+> show collections
+
+This will show all the collections.
+
+
+
+write quit() to exit the mongo shell.
+
+
+
+
+
+
+
+
+
+
