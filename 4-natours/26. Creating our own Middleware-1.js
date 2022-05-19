@@ -15,7 +15,7 @@ app.use((req, res, next) => {
   //Express basically passes the 'next' function as the third argument into this middleware function. And we can then call it whatever we want. But 'next' is really the convention.
   console.log("Hello from the middleware 👋");
 
-  next(); //if we didn't call 'next' here, then the request/response cycle would be stuck at this point. We wouldn't be able to move on, and we would never ever send back a response to the client. So it is very important to never forget to use 'next' in all of your middleware.
+  next(); //if we didn't call 'next' here, then the 'request/response cycle' would be stuck at this point. We wouldn't be able to move on, and we would never ever send back a response to the client. So it is very important to never forget to use 'next' in all of your middleware.
 });
 
 const tours = JSON.parse(
