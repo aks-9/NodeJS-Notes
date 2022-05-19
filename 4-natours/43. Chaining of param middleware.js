@@ -1,6 +1,6 @@
 //* Chaining of param middleware
 
-//This is tourController.js file
+//This is 'tourController.js' file
 
 /* Till now whenever we wanted to define a middleware, we only passed one middleware function. So for example in'tourRoutes.js' file, for handling this post request:
 
@@ -25,7 +25,7 @@ const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
 );
 
-//adding a new param middleware to check if the body of the request has a name or price. we might want to check if request.body actually contains the data that we want for the tour.
+//adding a new param middleware to check if the body of the request has a name or price. we might want to check if 'request.body' actually contains the data that we want for the tour.
 exports.checkBody = (req, res, next) => {
   if (!req.body.name || !req.body.price) {
     return res.status(400).json({
@@ -108,7 +108,7 @@ exports.deleteTour = (req, res) => {
 };
 
 /* 
-Go to the Postman app, select 'Create New Tour' and mrake sure that the body of the request doesn't has a 'price' property. 
+Go to the Postman app, select 'Create New Tour' and make sure that the body of the request doesn't have a 'price' property. 
 
 {
     "name": "Test Tour 5",
