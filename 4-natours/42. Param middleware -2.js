@@ -109,7 +109,7 @@ exports.deleteTour = (req, res) => {
   });
 };
 
-/* Now go to the 'tourRoutes.js' file and  edit this:
+/* Now go to the 'tourRoutes.js' file and edit this:
 
 router.param('id', (req, res, next, val) => {
   console.log(`Tour ID is: ${val}`);
