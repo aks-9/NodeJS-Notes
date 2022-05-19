@@ -12,20 +12,17 @@ const app = express();
 //* 1) MIDDLEWARES
 
 app.use(morgan("dev"));
-
 app.use(express.json());
 
 //global middleware-1
 app.use((req, res, next) => {
   console.log("Hello from the middleware 👋");
-
   next();
 });
 
 //global middleware-2
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-
   next();
 });
 
@@ -115,7 +112,7 @@ const deleteTour = (req, res) => {
   });
 };
 
-//adding new route handlers for new resource
+//adding new route handlers for new resource 'users'
 const getAllUsers = (req, res) => {
   res.status(500).json({
     //status code '500' means internal server error.
@@ -158,10 +155,10 @@ const deleteUser = (req, res) => {
 
 //* 3) ROUTES
 
-//Route handler-1
+// Route-1
 app.route("/api/v1/tours").get(getAllTours).post(createTour);
 
-//route handler -2
+// Route-2
 app
   .route("/api/v1/tours/:id")
   .get(getTour)
@@ -173,7 +170,7 @@ app.route("/api/v1/users").get(getAllUsers).post(createUser);
 
 //adding routes for new resource
 app
-  .route("/api/v1/tours/:id")
+  .route("/api/v1/users/:id")
   .get(getUser)
   .patch(updateUser)
   .delete(deleteUser);
