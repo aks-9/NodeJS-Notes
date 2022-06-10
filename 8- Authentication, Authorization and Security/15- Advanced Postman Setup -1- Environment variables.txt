@@ -1,0 +1,17 @@
+Postman environments
+
+An environment is like a context where our app is running. And, we can then specify a couple of variables for each of these environments. And, the two major ones that make the most sense are, the development and the production environment.
+
+Create an environment for development
+
+Dev: Natours
+Variable: URL
+Initial value: http://127.0.0.1:3000/
+
+and one for production:
+
+Prod: Natours
+Variable: URL
+Initial value: natours.io
+
+Now we'll replace 'http://127.0.0.1:3000/' from our every request we have created so far with {{URL}}
