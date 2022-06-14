@@ -1,0 +1,46 @@
+1.Semantic version notation: Three numbers:
+e.g. ^1.18.4
+
+major version(New release with breaking changes). 
+minor version(New Features except breaking changes). 
+patch version(for bug fixes). 
+
+^ symbol means that we accept patch and minor releases.
+~ symbol will only accept patch releases.
+
+
+2. CHECKING OUTDATED PACKAGES
+
+npm outdated
+
+
+3. INSTALLING PACKAGES OF SPECIFIC VERSION
+
+npm i slugify@1.0.0
+
+
+4. UPDATING PACKAGES
+
+npm update slugify
+
+
+
+5. INSTALL EXPRESS
+
+npm i express
+
+
+6. UNINSTALLING PACKAGES
+
+npm uninstall express
+
+
+7. DOWNLOADING ALL DEPENDENCIES
+
+npm install
+
+This will download all the dependencies in the package.json file to the project.
+
+
+package-lock.json file has all the versions of the packages set in stone and can't be changed.
+
