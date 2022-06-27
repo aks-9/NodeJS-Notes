@@ -1,0 +1,52 @@
+Streams allow to read and write data piece by piece without completing the whole read or write operation. Therefore we don't have to keep all the data in memory to do these operations.
+
+Another important thing to note is that streams are actually instances of the EventEmitter class. Meaning that all streams can emit and listen to named events. 
+
+Besides events, we also have important functions that we can use on streams.
+
+
+There are four fundamental types of streams: 
+
+1. READABLE STREAMS: 
+Where we consume data.
+
+For example, the data that comes in when an http server gets a request is actually a readable stream. So all the data that is sent with the request comes in piece by piece and not in one large piece. Another example from the file system is that we can read a file piece by piece by using a "readScreen" from the FS module, which can actually be quite useful for large text files.
+
+In the case of readable streams, they can emit events, and we can listen to many different events. But the most important two are the "data" and the "end" events.
+
+The "data" event is emitted when there is a new piece of data to consume, and the "end" event is emitted as soon as there is no more data to consume.
+
+The most important functions are the "pipe" and the "read" functions.
+
+Pipe function allows us to plug streams together, passing data from one stream to another without having to worry much about events at all.
+ 
+
+2. WRITABLE STREAMS:
+The ones to which we can write data.
+A great example is the "http" response that we can send back to the client and which is actually a writeable stream.
+
+The most important events are the "drain" and the "finish" events. And the most important functions are the "write" and "end" functions,
+
+ 
+3. DUPLEX STREAMS:
+They're simply streams that are both readable and writeable at the same time. These are a bit less common.
+
+Example: A web socket from the net module. A web socket is just a communication channel between client and server that works in both directions and stays open once the connection has been established.
+
+
+4. TRANSFORM STREAMS:
+These are duplex streams, that are both readable and writeable, which at the same time can also modify or transform the data as it is read or written. 
+
+Example: The zlib core module to compress data which actually uses a transform stream.
+
+
+
+The readable and writeable streams are the most important ones. 
+
+
+These events and functions described above are for consuming streams that are already implemented.
+
+So for example, Node implemented these http requests and responses as streams, and we can then consume, we can use them using the events and functions that are available for each type of stream. 
+
+We could also implement our own streams and then consume them using these same events and functions. But in order to build most apps, it's most important to know how to actually consume streams, not really how to implement them.
+
