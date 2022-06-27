@@ -1,0 +1,52 @@
+1. Open a folder in a code editor, go to its terminal and write the following to start the node:
+
+node
+
+
+2. You can define varibles and perform other JS operations like:
+
+> const name = 'jonas'
+
+> name
+'jonas'
+
+> 7+3
+10
+
+
+
+3. To exit the node process: 
+
+> .exit or use CTRL + D
+
+
+4. To clear the terminal write:
+> clear or use  CTRL + L
+
+
+5. Start the node again, and hit the 'tab' button twice. This will show you all the global varibles available in node.
+
+
+6. You can use an underscore " _ " to perform operation on the previous output. e.g. 3*8 = 24. We can add 6 to 24 by using _+6 to the previous output.
+
+> 3*8
+24
+> _+6
+30
+
+
+7. When you use a constructor like "String." and then hit the "tab" button, it will show all the methods available in node for that constructor.
+
+> String.
+String.__proto__             String.hasOwnProperty
+String.isPrototypeOf         String.propertyIsEnumerable
+String.toLocaleString        String.valueOf
+
+String.apply                 String.arguments
+String.bind                  String.call
+String.caller                String.constructor
+String.toString
+
+String.fromCharCode          String.fromCodePoint
+String.length                String.name
+String.prototype             String.raw
