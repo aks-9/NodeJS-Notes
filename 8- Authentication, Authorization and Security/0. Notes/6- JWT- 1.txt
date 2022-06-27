@@ -1,0 +1,13 @@
+There are many authentication methods out there, but we're gonna use Jason Web Tokens or JWT for short, which is a stateless solution for authentication. So there is no need to store any session state on the server which of course is perfect for restful APIs.
+
+[ How authentication actually works with JWT? ]
+
+ Assuming we already have a registered user in our database, this is how a user logs into the app. So the user's client starts by making a post request with the username or email and the password. The application then checks if the user exists and if the password is correct. And if so, a unique JWT for only that user is created using a 'secret' string that is stored on a server. 
+ 
+ The server then sends that JWT back to the client which will store it either in a cookie or in local storage. And just like this the user is authenticated and basically logged into our application without leaving any state on the server. So the server does not know which users are actually logged in. But of course, the user knows that he's logged in because he has a valid JWT which is a bit like a passport to access protected parts of the application. 
+ 
+Then, each time a user wants to access a protected route, like his user profile data, for example, he sends his JWT along with a request. So it's a bit like showing his passport to get access to that route. And that's probably the best and easiest way to understand this whole idea. 
+
+Now once the request hits the server, our app will then verify if the JWT is actually valid. So if the user is really who he says he is. And then the requested data will be sent to the client and if not, then there will be an error telling the user that he's not allowed to access that resource. And as long as the user is logged in, this is how it's gonna work each time that he requests data from any protected route. 
+
+Now what's very important to note here is that all this communication must happen over 'https'. Only then we have a really secure system. 
