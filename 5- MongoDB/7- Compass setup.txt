@@ -1,7 +1,0 @@
-Run MongoDB server in a powershell window or terminal.
-
-Then open up the MongoCompass app. Under the new connection tab, it will show configuration to connect with the MongoDB server. Click connect button.
-
-Under the 'Database' tab, you will see all of the current database in your system.
-
-Here you can manipulate the document in the GUI.
