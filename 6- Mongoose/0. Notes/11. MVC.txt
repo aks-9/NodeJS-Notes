@@ -1,0 +1,46 @@
+[ MVC architecture ]
+
+An architecture with 3 layers: Model, View, Controller.
+
+The "Model Layer" is concerned with everything about application's data, and the "Business Logic".
+
+The "View Layer" is necessary if we have a graphical interface in our app. Or in other words, if we're building a server-side rendered website. In this case, the view layer consists basically of the templates used to generate the view, that means the website that we're going to send back to the client. And that is the "Presentation Logic".
+
+The "Controller" layer's function is to handle the application's request, interact with models, and send back responses to the client. And all that is called the "Application Logic". 
+
+
+
+[ MVC in the context of our app, and the request-response cycle ]:
+
+Request-->Router-->Controller-->Model-->Get Data-->Response
+
+It all starts with a request. That request will hit one of our routers, like tours, users, etc. Now the goal of the router is to delegate the request to the correct handler function, which will be in one of the controllers. Then, depending on the incoming request, the controller might need to interact with one of the models, for example to retrieve a certain document from the database, or to create a new one. Once more, there is one model file for each resource. After getting the data from the model, the controller might then be ready to send back a response to the client.
+
+Now, in case we want to actually render a website, there is one more step involved. In that case, after getting the data from the model, the controller will then select one of the view templates and inject the data into it. That rendered website will then be sent back as the response.
+
+
+In the view layer in an Express app there is usually one view template for each page. Like a tour overview page, a tour detail page, or a login page.
+
+
+One of the big goals of MVC is to separate business logic from application logic.
+
+
+[ Application logic ]
+
+It is all the code that is only concerned about the application's implementation and not the underlying business problem that we're actually trying to solve with the application. Like showing and selling tours, managing stock in a supermarket, or organizing a library. So again, application logic is the logic that makes the app actually work. 
+
+For example, a big part of application logic in Express, is all about managing requests and responses. So, in a sense, we can also say that application logic is more about technical stuff.
+
+If we have views in our app, the application logic serves as a bridge between model and view layers So that we never mix business logic with presentation logic.
+
+
+[ Business logic ]
+
+It is all the code that actually solves the business problem that we set out to solve. Let's say again, that our goal is to show tours to customers and then sell them. And the code that is directly related to the business rules, to how the business works, and the business needs, is business logic.
+
+Creating new tours in the app's database, checking if a user's password is correct when he logs in, validating user input data, or ensuring that only users who bought a certain tour can review it. So all this stuff is concerned with the business itself, and so it's part of the business logic.
+
+
+
+Now, we need to keep in mind that "application logic" and "business logic" are almost impossible to completely separate, and so sometimes they will overlap. But we should do our best efforts to keep the "application logic" in our "controllers" and "business logic" in our "models". And there is even this philosophy of "fat models, thin controllers", which says we should offload as much logic as possible into the models, to keep the controllers as simple and lean as possible. 
+
