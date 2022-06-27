@@ -1,0 +1,19 @@
+1. Open the starter folder in vs code.
+
+2. run npm init to create the package.json file.
+
+package name: (starter) natours
+version: (1.0.0)
+description: learning NodeJs, Express and MongoDB
+entry point: (index.js) app.js
+test command:
+git repository:
+keywords:
+author: Ashish Kumar Singh
+license: (ISC)
+
+3. Install express
+
+npm i express@4
+
+4. Create a new file called 'app.js' in the root directory of the project.
